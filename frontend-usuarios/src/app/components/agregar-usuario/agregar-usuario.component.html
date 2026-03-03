@@ -1,0 +1,21 @@
+<h2>Agregar Nuevo Usuario</h2>
+<form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+
+  <div>
+    <label>Nombre:</label>
+    <input type="text" formControlName="nombre">
+    <div *ngIf="usuarioForm.get('nombre')?.invalid && usuarioForm.get('nombre')?.touched">
+      <small style="color: red;">El nombre es obligatorio (min. 3 letras).</small>
+    </div>
+  </div>
+
+  <div>
+    <label>Email:</label>
+    <input type="email" formControlName="email">
+    <div *ngIf="usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched">
+      <small style="color: red;">Ingresa un email válido.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="usuarioForm.invalid">Guardar Usuario</button>
+</form>
